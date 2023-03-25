@@ -95,7 +95,7 @@ export async function scrollPage(
     });
 
     await scrollPageToTop(page, {
-      size: viewport[1] * 2,
+      size: viewport[1] - 10,
       delay: 0,
     });
   }
