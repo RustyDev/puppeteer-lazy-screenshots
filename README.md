@@ -40,6 +40,4 @@ For example, to take screenshots of the URLs listed in `urls.txt` with a viewpor
 ```bash
 npm run start -w 800 -h 600 -o screens
 ```
-
-![nytimes_com](https://user-images.githubusercontent.com/490988/227745484-1bd62ba9-e7f6-4431-97ff-dff07d69d277.png)
-
+![nytimes_com](https://user-images.githubusercontent.com/490988/227745739-626f2413-3315-4c06-a1b5-8c2779c8347f.jpg)
