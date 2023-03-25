@@ -1,0 +1,32 @@
+{
+  "name": "puppeteer-screenshots",
+  "version": "1.0.0",
+  "description": "A puppeteer script that takes full screenshots and awaits lazy loaded content",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "start:watch": "npx nodemon src/index.ts"
+  },
+  "keywords": [
+    "puppeteer",
+    "typescript",
+    "nodejs",
+    "node",
+    "puppeteer-autoscroll",
+    "screenshots",
+    "full-page"
+  ],
+  "author": "RustyDev",
+  "license": "ISC",
+  "dependencies": {
+    "cli-progress": "^3.12.0",
+    "eslint": "^8.36.0",
+    "minimist": "^1.2.8",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7",
+    "puppeteer": "^19.8.0",
+    "puppeteer-autoscroll-down": "^1.1.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2"
+  }
+}
