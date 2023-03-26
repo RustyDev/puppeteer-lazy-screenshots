@@ -123,6 +123,8 @@ export async function saveScreenshot(
 }
 
 (async () => {
+  if (process.env.NODE_ENV === 'TEST') return;
+
   const browser = await puppeteer.launch({
     headless,
   });
