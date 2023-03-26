@@ -27,17 +27,19 @@ npm run start [options]
 
 where `[options]` are the command line options you can pass to the script:
 
-- `-w <width>`: set the viewport width (default: 1400)
-- `-h <height>`: set the viewport width (default: 800)
+- `-vw <width>`: set the viewport width (default: 1400)
+- `-vh <height>`: set the viewport width (default: 800)
+- `-h <headed>`: set to run headed Chrome (default: false)
 - `-s <single>`: disable scrolling to take a full-page screenshot (default: false)
 - `-o <directory>`: set the output directory for the screenshots (default: "screenshots")
 - `-d <delay>`: set the delay between each scroll event in milliseconds to trigger lazy loaded content (default: 375)
 - `-e <extension>`: set the file extension for the screenshots - `jpg` | `png` | `jpeg` (default: "png")
-- `-q <quality>`: set the quality for the screenshots - 1 to 100 (default:blank)
+- `-q <quality>`: set the quality for the screenshots (except png) - 1 to 100 (default: 100)
 
 For example, to take screenshots of the URLs listed in `urls.txt` with a viewport size of 800x600 and output them to a directory called `screens`, run the following command:
 
 ```bash
 npm run start -w 800 -h 600 -o screens
 ```
+
 ![nytimes_com](https://user-images.githubusercontent.com/490988/227745739-626f2413-3315-4c06-a1b5-8c2779c8347f.jpg)

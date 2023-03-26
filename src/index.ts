@@ -2,25 +2,27 @@ import fs from 'fs';
 import minimist from 'minimist';
 import path from 'path';
 import * as puppeteer from 'puppeteer';
-import { scrollPageToBottom, scrollPageToTop } from 'puppeteer-autoscroll-down';
+import { scrollPageToBottom } from 'puppeteer-autoscroll-down';
 import * as progress from 'cli-progress';
 
 interface Args {
   d?: number;
   e?: AllowedExtensions;
-  h?: number;
+  h?: boolean;
   o?: string;
   q?: number;
   s?: boolean;
-  w?: number;
+  vh?: number;
+  vw?: number;
 }
 
 type AllowedExtensions = 'jpg' | 'png' | 'jpeg' | 'webp';
 
 const argv: Args = minimist(process.argv.slice(2));
 
-const width: number = argv.w ?? 1400;
-const height: number = argv.h ?? 800;
+const width: number = argv.vw ?? 1400;
+const height: number = argv.vh ?? 800;
+const headless: boolean = argv.h ? false : true;
 const viewport = [width, height];
 const disableScrolling: boolean = argv.s ?? false;
 const dir: string = argv.o ?? 'screenshots';
@@ -90,14 +92,15 @@ export async function scrollPage(
 ) {
   if (!disableScrolling) {
     await scrollPageToBottom(page, {
-      size: viewport[1] - 10,
+      size: viewport[1],
       delay,
     });
-
-    await scrollPageToTop(page, {
-      size: viewport[1] - 10,
-      delay: 0,
+    await page.waitForTimeout(1000);
+    // scroll to top to capture fixed navs
+    await page.evaluate(() => {
+      window.scrollTo(0, 0);
     });
+    await page.waitForTimeout(1000);
   }
 }
 
@@ -120,7 +123,9 @@ export async function saveScreenshot(
 }
 
 (async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless,
+  });
 
   try {
     progressBar.start(totalScreenshots, 0);
